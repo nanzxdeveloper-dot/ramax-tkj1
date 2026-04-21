@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Lover Portfolio | Profesional & Estetik</title>
+    <style>
+        /* --- CSS VARIABLES --- */
+        :root {
+            --primary: #d4a373; /* Warna hangat seperti bulu kucing */
+            --secondary: #faedcd;
+            --dark: #1a1a1a;
+            --light: #fefae0;
+            --text-muted: #666;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ddd;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .btn-contact {
+            background: var(--dark);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .btn-contact:hover {
+            background: var(--primary);
+        }
+
+        /* --- HERO SECTION (Komponen 1) --- */
+        .hero {
+            padding: 100px 0;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 25px 25px 0 var(--secondary);
+        }
+
+        /* --- SERVICES / PHILOSOPHY (Komponen 2) --- */
+        .services {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 40px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* --- PORTFOLIO GALLERY (Komponen 3) --- */
+        .portfolio {
+            padding: 80px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .portfolio-item {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #ddd;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- ABOUT ME (Komponen 4) --- */
+        .about {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .about-box {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: #fff;
+            padding: 50px;
+            border-radius: 30px;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-profile {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-profile img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 5px solid var(--primary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            background: var(--dark);
+            color: #fff;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero, .about-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-image img {
+                box-shadow: 15px 15px 0 var(--secondary);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Fachri.Cat</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#philosophy">FILOSOFI</a></li>
+                    <li><a href="#gallery">GALERI</a></li>
+                    <li><a href="#about">TENTANG</a></li>
+                </ul>
+            </nav>
+            
+        </div>
+    </header>
+
+    <section class="hero container" id="home">
+        <div class="hero-content">
+            <h1>Cintai Kucing. <br>Ciptakan Karya.</h1>
+            <p>Seorang profesional yang mendedikasikan hidup untuk memahami keindahan felin melalui desain, perawatan, dan dedikasi tanpa batas.</p>
+            <a href="#gallery" class="btn-contact" style="background: var(--primary);">Lihat Portofolio Meow</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80" alt="Kucing Estetik">
+        </div>
+    </section>
+
+    <section class="services" id="philosophy">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kenapa Kucing?</h2>
+                <p>Mencintai kucing mengajarkan saya tiga hal dalam profesionalisme:</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Ketelitian (Precision)</h3>
+                    <p>Seperti kucing yang mengintai mangsanya, setiap detail dalam pekerjaan saya diperhatikan dengan sangat tajam.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Kemandirian (Independence)</h3>
+                    <p>Mampu bekerja secara mandiri dan memberikan solusi kreatif yang unik tanpa harus selalu didikte.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Kenyamanan (Comfort)</h3>
+                    <p>Desain dan karya yang saya hasilkan bertujuan untuk memberikan kenyamanan maksimal bagi penggunanya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio container" id="gallery">
+        <div class="section-title">
+            <h2>Koleksi Meow-sterpiece</h2>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=500" alt="Cat 1"></div>
+            <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=500" alt="Cat 2"></div>
+            <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?w=500" alt="Cat 3"></div>
+            <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1472491235688-bdc81a63246e?w=500" alt="Cat 4"></div>
+            <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1513245543132-31f507417b26?w=500" alt="Cat 5"></div>
+            <div class="portfolio-item"><img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=500" alt="Cat 6"></div>
+        </div>
+    </section>
+
+    <section class="about container" id="about">
+        <div class="about-box">
+            <div class="about-text">
+                <h2>Siapa di Balik Layar?</h2>
+                <p>Saya adalah seorang individu yang percaya bahwa dunia akan menjadi tempat yang lebih baik jika kita belajar dari ketenangan seekor kucing. Melalui website ini, saya memadukan antara hobi dan profesionalisme untuk menunjukkan bahwa passion adalah kunci utama dalam bekerja.</p>
+            </div>
+            <div class="about-profile">
+                <img src="https://autoresbot.com/tmp_files/413916ab-163d-45f4-8bb6-88cd788d3004.jpg" alt="Foto Profil">
+                <h4>Fachri Ramadhan</h4>
+                <p>Professional Cat Admirer</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Fachri Ramadhan. Dibuat dengan penuh "Meow" dan Kode.</p>
+        </div>
+    </footer>
+    
+</footer>
+
+<section class="contact" id="contact">
+    <style>
+        .contact {
+            padding: 100px 0;
+            background: var(--secondary);
+        }
+
+        .contact .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 15px;
+        }
+
+        .contact-box button {
+            width: 100%;
+            padding: 15px;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+        }
+
+        .contact-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .whatsapp { background: #25D366; color: white; }
+        .email { background: var(--dark); color: white; }
+    </style>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Hubungi Saya</h2>
+        </div>
+
+        <div class="contact-box">
+            <input type="text" placeholder="Nama Anda">
+            <input type="email" placeholder="Email Anda">
+            <textarea rows="4" placeholder="Pesan"></textarea>
+            <button>Kirim Pesan</button>
+        </div>
+
+        <div class="contact-links">
+            <a href="https://wa.me/628xxxxxxxxxx" class="whatsapp">WhatsApp</a>
+            <a href="mailto:emailkamu@gmail.com" class="email">Email</a>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>
